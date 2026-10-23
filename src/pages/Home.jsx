@@ -36,14 +36,14 @@ const ease = [0.22, 1, 0.36, 1]
 
 function Hero() {
   return (
-    <section className="grain relative flex min-h-[100svh] items-center overflow-hidden bg-forest-950 pt-28 pb-16 text-cream-50 lg:pt-24">
+    <section className="grain relative flex min-h-[100svh] items-center overflow-hidden bg-forest-950 pt-20 pb-16 text-cream-50 lg:pt-24">
       <div className="absolute inset-0 -z-20 opacity-25">
         <Img src="/images/cardamom-hills" alt="" priority sizes="100vw" className="size-full object-cover" />
       </div>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_70%_45%,rgba(125,161,63,.28),transparent_55%),linear-gradient(to_bottom,rgba(8,24,15,.75),rgba(8,24,15,.92)_70%,#08180f)]" />
 
-      <div className="container-x grid items-center gap-6 lg:grid-cols-[1.05fr_1fr]">
-        <div className="relative z-10">
+      <div className="container-x grid items-center gap-2 lg:grid-cols-[1.05fr_1fr] lg:gap-6">
+        <div className="relative z-10 order-2 lg:order-1">
           <motion.p
             className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-500/10 px-4 py-1.5 text-xs font-bold tracking-wider text-gold-200"
             initial={{ opacity: 0, y: 16 }}
@@ -106,7 +106,7 @@ function Hero() {
         </div>
 
         <motion.div
-          className="relative -mx-5 h-[360px] sm:h-[460px] lg:mx-0 lg:h-[640px]"
+          className="relative order-1 -mx-5 h-[58svh] min-h-[320px] sm:h-[460px] lg:order-2 lg:mx-0 lg:h-[640px]"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, delay: 0.2, ease }}

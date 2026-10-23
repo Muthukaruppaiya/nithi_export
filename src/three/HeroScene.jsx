@@ -78,7 +78,7 @@ export default function HeroScene() {
   return (
     <Canvas
       dpr={[1, 1.75]}
-      camera={{ position: [0, 0, 8.5], fov: 40 }}
+      camera={{ position: [0, 0, compact ? 7.2 : 8.5], fov: compact ? 38 : 40 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       style={{ touchAction: 'pan-y' }}
     >
