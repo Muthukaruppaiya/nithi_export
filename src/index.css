@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/manrope';
+
+@theme {
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-sans: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-forest-950: #08180f;
+  --color-forest-900: #10291c;
+  --color-forest-800: #163626;
+  --color-forest-700: #1f4a34;
+  --color-forest-600: #2b6146;
+
+  --color-pod-600: #5f8a2c;
+  --color-pod-500: #7da13f;
+  --color-pod-400: #9bbd5a;
+  --color-pod-300: #bdd68c;
+  --color-pod-100: #eef4dc;
+
+  --color-gold-600: #a9822f;
+  --color-gold-500: #c8a24c;
+  --color-gold-400: #d9b968;
+  --color-gold-200: #f1e3bb;
+
+  --color-cream-50: #fcfaf4;
+  --color-cream-100: #f6f2e7;
+  --color-cream-200: #ece5d3;
+
+  --color-ink: #17221b;
+  --color-muted: #55635a;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(3deg); }
+  }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold transition duration-300;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-cream-50 font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-balance;
+    font-variation-settings: 'SOFT' 50, 'WONK' 0;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    @apply bg-pod-300 text-forest-900;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold-500;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-pod-600 uppercase;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-current;
+  }
+  .btn-primary {
+    @apply btn bg-gold-500 text-forest-950 shadow-[0_10px_30px_-10px] shadow-gold-500/60 hover:-translate-y-0.5 hover:bg-gold-400;
+  }
+  .btn-dark {
+    @apply btn bg-forest-900 text-cream-50 hover:-translate-y-0.5 hover:bg-forest-700;
+  }
+  .btn-ghost {
+    @apply btn border border-current/25 hover:-translate-y-0.5 hover:border-current/60;
+  }
+  .card {
+    @apply rounded-3xl border border-forest-900/8 bg-white shadow-[0_20px_50px_-30px_rgba(16,41,28,0.35)];
+  }
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-gold-400 via-gold-200 to-pod-300 bg-clip-text text-transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
